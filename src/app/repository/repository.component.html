@@ -1,0 +1,45 @@
+<div class="container">
+    <ng-progress style="color: aquamarine;"></ng-progress>
+    <form #githubApi="ngForm">
+        <div class="form-group">
+            <label for="repos">Repository</label>
+            <input [(ngModel)]="repos" #repo="ngModel" type="search" name="repos" id="repo" class="form-control" required>
+            <button (click)="searchRepo()" type="submit" class="btn btn-outline-success btn-hov"><i class="fa fa-search"></i></button>
+        </div>
+    </form>
+    <hr>
+    <div class="col-md-6">
+        <h2>Check Repository</h2>
+        <div class="col-md-8">
+            <div class="card-body" *ngIf="repoProfile">
+                <div class="card" *ngFor="let item of repoProfile.items">
+                <h3 class="card-header">{{ item.name }}</h3>
+                <div class="card-body">
+                    <ul>
+                        <div>
+                        <li>
+                            description: {{item.description}}
+                        </li>
+                        </div>
+                        <div>
+                        <li>
+                            url: {{item.url}}
+                        </li>
+                        </div>
+                        <div>
+                        <li>
+                            language used: {{item.language}}
+                        </li>
+                        </div>
+                        <div>
+                        <li>
+                            last modified: {{item.updated_at | date}}
+                        </li>
+                        </div>
+                    </ul>
+                </div>  
+            </div>
+            </div>
+        </div>
+    </div> 
+</div>
